@@ -1,8 +1,10 @@
-body {
+html, body {
     background-color: #17152d;
     color: white;
     font-family: Arial, sans-serif;
+    min-height: 100%;
 }
+
 h1 {
     color: #c4b5fd;
 }
