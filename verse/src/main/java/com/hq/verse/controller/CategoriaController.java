@@ -38,7 +38,7 @@ public class CategoriaController {
     }
 
     @GetMapping("/{id}/editar")
-    public String editar(Integer id, Model model) {
+    public String editar(@PathVariable Integer id, Model model) {
 
         Categoria categoria = repository.findById(id).orElse(null);
 

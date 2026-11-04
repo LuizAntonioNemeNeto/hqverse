@@ -58,7 +58,7 @@ public class ObraController {
     }
 
     @GetMapping("/{id}/editar")
-    public String editar(Integer id, Model model) {
+    public String editar(@PathVariable Integer id, Model model) {
 
         Obra obra = obraRepository.findById(id).orElse(null);
 
