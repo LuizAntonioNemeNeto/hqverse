@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>HqVerse</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-black">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/">
+            HqVerse
+        </a>
+
+        <a class="btn btn-outline-light btn-sm"
+           href="/categorias">
+            Categorias
+        </a>
+        <a class="btn btn-outline-light btn-sm"
+           href="/obras">
+            Obras
+        </a>
+    </div>
+</nav>
+
+<main class="container py-5">
+    <div class="table-responsive">
+
+        <div class="d-flex justify-content-between
+                align-items-center mb-4">
+
+            <h1 class="text-warning">Nosso catálogo</h1>
+
+            <a href="/obras/nova"
+               class="btn btn-warning">
+                Nova obra
+            </a>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4 col-lg-3"
+                 th:each="obra : ${obras}">
+
+                <div class="card h-100">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title"
+                            th:text="${obra.titulo}">
+                        </h5>
+
+                        <p class="card-text"
+                           th:text="${obra.autor}">
+                        </p>
+
+                        <p class="text-warning fw-bold"
+                           th:text="${#numbers.formatCurrency(obra.preco)}">
+                        </p>
+
+                        <p class="small"
+                           th:text="${obra.categoria.nome}">
+                        </p>
+
+                        <div class="d-flex gap-2 mt-3">
+
+                            <a th:href="@{/obras/{id}/editar(id=${obra.id})}"
+                               class="btn btn-outline-warning btn-sm">
+
+                                <i class="iconoir-edit-pencil"></i>
+
+                            </a>
+
+                            <form th:action="@{/obras/{id}/vender(id=${obra.id})}"
+                                  method="post"
+                                  onsubmit="return confirm('Deseja vender esta obra?')">
+
+                                <button type="submit"
+                                        class="btn btn-success btn-sm">
+
+                                    <i class="iconoir-shopping-bag"></i>
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</main>
+</body>
+</html>

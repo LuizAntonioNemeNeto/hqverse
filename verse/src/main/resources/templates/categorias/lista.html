@@ -45,6 +45,7 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Descrição</th>
+                <th>Ações</th>
             </tr>
             </thead>
 
@@ -59,6 +60,12 @@
                 <td th:text="${categoria.id}"></td>
                 <td th:text="${categoria.nome}"></td>
                 <td th:text="${categoria.descricao}"></td>
+                <td>
+                    <a th:href="@{/categorias/{id}/editar(id=${categoria.id})}"
+                       class="btn btn-outline-warning btn-sm">
+                        Editar
+                    </a>
+                </td>
             </tr>
             </tbody>
         </table>

@@ -36,4 +36,18 @@ public class CategoriaController {
 
         return "redirect:/categorias";
     }
+
+    @GetMapping("/{id}/editar")
+    public String editar(Integer id, Model model) {
+
+        Categoria categoria = repository.findById(id).orElse(null);
+
+        if (categoria == null) {
+            return "redirect:/categorias";
+        }
+
+        model.addAttribute("categoria", categoria);
+
+        return "categorias/formulario";
+    }
 }
