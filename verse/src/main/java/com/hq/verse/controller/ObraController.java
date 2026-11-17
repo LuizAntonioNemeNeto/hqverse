@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/obras")
 public class ObraController {
@@ -78,5 +80,15 @@ public class ObraController {
         obraRepository.deleteById(id);
 
         return "redirect:/obras";
+    }
+
+    @GetMapping("/categoria/{categoriaId}")
+    public String filtrarPorCategoria(@PathVariable Integer categoriaId, Model model) {
+
+        List<Obra> obras = obraRepository.findByCategoria_Id(categoriaId);
+
+        model.addAttribute("obras", obras);
+
+        return "obras/lista";
     }
 }

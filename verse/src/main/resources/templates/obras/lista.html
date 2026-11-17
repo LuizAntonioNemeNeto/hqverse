@@ -54,6 +54,9 @@
                  th:each="obra : ${obras}">
 
                 <div class="card h-100">
+                    <img th:src="${obra.imagem}"
+                         class="card-img-top"
+                         th:alt="${obra.titulo}">
 
                     <div class="card-body">
 

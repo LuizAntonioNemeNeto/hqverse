@@ -12,6 +12,8 @@ public class Obra {
 
     private String autor;
 
+    private String imagem;
+
     private Double preco;
 
     @ManyToOne
@@ -21,12 +23,13 @@ public class Obra {
     public Obra() {
     }
 
-    public Obra(Integer id, String titulo, String autor, Double preco, Categoria categoria) {
+    public Obra(Integer id, String titulo, String autor, Double preco, String imagem, Categoria categoria) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.preco = preco;
         this.categoria = categoria;
+        this.imagem = imagem;
     }
 
     public Integer getId() {
@@ -67,5 +70,13 @@ public class Obra {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }
